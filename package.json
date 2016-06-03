@@ -1,0 +1,23 @@
+{
+  "name": "headerparser",
+  "version": "1.0.0",
+  "description": "Parses Headers of requests",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "4.1.1"
+  },
+  "keywords": [
+    "header",
+    "parser",
+    "heroku",
+    "first"
+  ],
+  "author": "Trion",
+  "homepage": "https://github.com/Trion129/Header-Parser-Microservice#readme",
+  "dependencies": {
+    "express": "^4.9.8"
+  }
+}
