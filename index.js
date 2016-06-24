@@ -1,16 +1,13 @@
 var express = require("express");
-
+var path = require('path')
 var app = express();
 
-app.enable('trust proxy');
+app.set('view engine', 'pug');
 
-app.get("/",function(req,res){
-	var object = {};
-	object.ip = req.ip;
-	object.language = req.headers["accept-language"][0];
-	object.os = req.headers['user-agent'].match(/\((.*?)\)/gi)[0];
-	object.os = object.os.substring(1,object.os.length-1);
-	res.end(JSON.stringify(object));
+app.get('/', function (req, res) {
+  res.render('index', { title: 'Hey', message: 'Hello there!'});
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(process.env.PORT || 8080);
