@@ -5,20 +5,30 @@ html
 		script(src="/js/jquery-3.0.0.min.js")
 		link(rel="stylesheet", type="text/css", href="css/bootstrap.min.css")
 		script(src="/js/bootstrap.min.js")
+		link(rel="stylesheet" type="text/css" href="css/bootstrap-material-design.css")
+		link(rel="stylesheet" type="text/css" href="css/ripples.css")
+		link(rel="stylesheet", type="text/css", href="css/main.css")
 	body
-		navbar.navbar.navbar-default(role='navigation')
+		navbar.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
 			.container
 				.navbar-header
 					button.navbar-toggle(type="button", data-toggle="collapse", data-target=".navbar-collapse")
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
-					a.navbar-brand(href="#") VotesApp
+					a.navbar-brand(href="javascript:void(0)") VotesApp
 				.collapse.navbar-collapse
 					ul.nav.navbar-nav.navbar-right
 						li
 							a(href="#") Sign In
 						li
 							a(href="#") Register
-		.introHead.text-center
-			h1.jumbotron Welcome to Votesapp!!
+		.jumbotron.introHead.text-center
+			h1 VotesApp
+			h2 Hosting your polls
+		#RecentVotes
+		script(src="js/material.min.js")
+		script(src="js/ripples.js")
+		script(src="https://fb.me/react-15.1.0.min.js")
+		script(src="https://fb.me/react-dom-15.1.0.min.js")
+		script(src="js/main.js")
