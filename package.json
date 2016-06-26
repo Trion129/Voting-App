@@ -1,10 +1,11 @@
 {
-  "name": "headerparser",
-  "version": "1.0.0",
-  "description": "Parses Headers of requests",
+  "name": "votesapp",
+  "version": "1.0.1",
+  "description": "Allows people to vote",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node index.js",
+    "build": "babel src -d lib"
   },
   "engines": {
     "node": "4.1.1"
@@ -19,6 +20,12 @@
   "homepage": "https://github.com/Trion129/Header-Parser-Microservice#readme",
   "dependencies": {
     "express": "^4.9.8",
-    "pug": "^2.0.0-beta3"
+    "pug": "^2.0.0-beta3",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.10.1",
+    "babel-preset-react": "^6.5.0"
   }
 }

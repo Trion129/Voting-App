@@ -1,11 +1,24 @@
 $.material.init();
 $.material.ripples();
 
+var React = require('react');
+var ReactDOM = require('react-dom');
+
+var votes=[
+  [
+    {
+      link: "#",
+      head: "Kejriwal vs Modi",
+      description: "Who would win the polls?"
+    }
+  ]
+];
+
 var VoteView = React.createClass({
   render: function(){
     var Voterows = this.props.votes.map(
       function(voteRow,index){
-        return <VoteRow voteRow = {voteRow} key={index} />;
+        return (<VoteRow voteRow = {voteRow} key={index} />);
       }
     );
     return(
@@ -20,7 +33,7 @@ var VoteRow = React.createClass({
   render: function(){
     var votes = this.props.voteRow.map(
       function(vote,index){
-        return <Vote key = {index} vote = {vote}/>
+        return (<Vote key = {index} vote = {vote}/>)
       }
     )
     return(
@@ -46,4 +59,4 @@ var Vote = React.createClass({
   }
 });
 
-ReactDOM.render(<VoteView votes={} />, document.getElementById("RecentVotes"))
+ReactDOM.render(<VoteView votes={votes} />, document.getElementById("RecentVotes"))
