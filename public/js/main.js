@@ -1,48 +1,49 @@
 $.material.init();
 $.material.ripples();
 
-var ProjectView = React.createClass({
-render: function(){
-  var Projectrows = this.props.projects.map(
-    function(projectRow,index){
-      return <ProjectRow projectRow = {projectRow} key={index} />;
-    }
-  );
-  return(
-    <div>
-        {Projectrows}
-    </div>
-  );
-}
-});
-
-var ProjectRow = React.createClass({
-render: function(){
-  var projects = this.props.projectRow.map(
-    function(project,index){
-      return <Project key = {index} project = {project}/>
-    }
-  )
-  return(
-    <div className="row text-center">
-      {projects}  
-    </div>
-  )
-}
-});
-
-var Project = React.createClass({
-render: function(){
-  return (
-    <div className="col-sm-3 portfolio-item animation-element">
-      <a href={this.props.project.link}>
-        <img src={this.props.project.image} className="img-responsive" />
-      <div className="portfolio-caption">
-        <h4>{this.props.project.head}</h4>
-        <p id="small-text" className="text-muted">{this.props.project.tech}</p>
+var VoteView = React.createClass({
+  render: function(){
+    var Voterows = this.props.votes.map(
+      function(voteRow,index){
+        return <VoteRow voteRow = {voteRow} key={index} />;
+      }
+    );
+    return(
+      <div>
+          {Voterows}
       </div>
-      </a>
-    </div>
-  )
-}
+    );
+  }
 });
+
+var VoteRow = React.createClass({
+  render: function(){
+    var votes = this.props.voteRow.map(
+      function(vote,index){
+        return <Vote key = {index} vote = {vote}/>
+      }
+    )
+    return(
+      <div className="row text-center">
+        {votes}  
+      </div>
+    )
+  }
+});
+
+var Vote = React.createClass({
+  render: function(){
+    return (
+      <div className="col-sm-3 vote-item">
+        <a href={this.props.vote.link}>
+          <div className="vote-caption">
+            <h4>{this.props.vote.head}</h4>
+            <p id="small-text" className="text-muted">{this.props.vote.description}</p>
+          </div>
+        </a>
+      </div>
+    )
+  }
+});
+
+ReactDOM.render(<VoteView votes={} />, document.getElementById("RecentVotes"))
