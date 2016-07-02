@@ -10,12 +10,6 @@
   "engines": {
     "node": "4.1.1"
   },
-  "keywords": [
-    "header",
-    "parser",
-    "heroku",
-    "first"
-  ],
   "author": "Trion",
   "homepage": "https://github.com/Trion129/Voting-App/#readme",
   "dependencies": {
@@ -24,8 +18,7 @@
     "mongodb": "^2.1.18",
     "pug": "^2.0.0-beta3",
     "react": "^15.1.0",
-    "react-dom": "^15.1.0",
-    "webpack": "^1.13.1"
+    "react-dom": "^15.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.10.1",
