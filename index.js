@@ -5,7 +5,7 @@ var app = express();
 app.set('view engine', 'pug');
 
 app.get('/', function (req, res) {
-  res.render('index', { title: 'Hey', message: 'Hello there!'});
+  res.render('webpages/index', { title: 'Votesapp', message: 'Hello there!'});
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
