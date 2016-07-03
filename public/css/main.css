@@ -13,10 +13,9 @@
 }
 
 .vote-item{
-	background-color: #FFF;
-	width: 20%;
+	padding: 5%;
+	background-color: #ebebeb;
 	margin-left: 5%;
-	line-height: 3em;
 	transition: 0.3s;
 	text-decoration: none;
 }
@@ -41,4 +40,10 @@
 
 .vote-caption{
 	font-style: italic;
+}
+
+#RecentVotes{
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
 }

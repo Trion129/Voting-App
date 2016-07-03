@@ -19698,6 +19698,26 @@ var votes = [[{
   link: "#",
   head: "Kejriwal vs Modi",
   description: "Who would win the polls?"
+}, {
+  link: "#",
+  head: "Spooderman or superman",
+  description: "Who is better?"
+}, {
+  link: "#",
+  head: "Spooderman or superman",
+  description: "Who is better?"
+}], [{
+  link: "#",
+  head: "Kejriwal vs Modi",
+  description: "Who would win the polls?"
+}, {
+  link: "#",
+  head: "Spooderman or superman",
+  description: "Who is better?"
+}, {
+  link: "#",
+  head: "Spooderman or superman",
+  description: "Who is better?"
 }]];
 
 var VoteView = React.createClass({
@@ -19709,7 +19729,7 @@ var VoteView = React.createClass({
     });
     return React.createElement(
       'div',
-      { className: 'container-fluid' },
+      { className: 'container' },
       Voterows
     );
   }
