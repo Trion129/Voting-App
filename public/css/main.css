@@ -1,10 +1,44 @@
 .introHead{
 	margin-top: 50px;
 	background: #148CE4;
-	padding: 10%;
 	color: #FFF;
 	text-shadow: 2px 2px 4px #000000;
 }
 .text-muted{
 	text-decoration: none;
+}
+
+.text-muted:hover{
+	text-decoration: none;
+}
+
+.vote-item{
+	background-color: #FFF;
+	width: 20%;
+	margin-left: 5%;
+	line-height: 3em;
+	transition: 0.3s;
+	text-decoration: none;
+}
+
+.vote-item h4{
+	color: blue;
+	font-weight: bold;
+}
+
+.vote-item:hover{
+	box-shadow: 2px 2px 4px #000;
+}
+
+.small-text{
+	font-size: 0.5em;
+}
+
+.fb-login-button{
+	margin-top: 15px;
+	margin-left: 10px;
+}
+
+.vote-caption{
+	font-style: italic;
 }

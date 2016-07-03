@@ -18576,7 +18576,7 @@ module.exports = camelizeStyleName;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 var isTextNode = require('./isTextNode');
@@ -18831,7 +18831,7 @@ module.exports = createNodesFromMarkup;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  */
 
 function makeEmptyFunction(arg) {
@@ -19396,7 +19396,7 @@ module.exports = mapObject;
  * LICENSE file in the root directory of this source tree. An additional grant
  * of patent rights can be found in the PATENTS file in the same directory.
  *
- *
+ * 
  * @typechecks static-only
  */
 
@@ -19484,7 +19484,7 @@ module.exports = performanceNow;
  * of patent rights can be found in the PATENTS file in the same directory.
  *
  * @typechecks
- *
+ * 
  */
 
 /*eslint-disable no-self-compare */
@@ -19709,7 +19709,7 @@ var VoteView = React.createClass({
     });
     return React.createElement(
       'div',
-      null,
+      { className: 'container-fluid' },
       Voterows
     );
   }
@@ -19739,18 +19739,18 @@ var Vote = React.createClass({
       { className: 'col-sm-3 vote-item' },
       React.createElement(
         'a',
-        { href: this.props.vote.link },
+        { className: 'text-muted', href: this.props.vote.link },
+        React.createElement(
+          'h4',
+          null,
+          this.props.vote.head
+        ),
         React.createElement(
           'div',
           { className: 'vote-caption' },
           React.createElement(
-            'h4',
-            null,
-            this.props.vote.head
-          ),
-          React.createElement(
             'p',
-            { id: 'small-text', className: 'text-muted' },
+            { 'class': 'small-text' },
             this.props.vote.description
           )
         )

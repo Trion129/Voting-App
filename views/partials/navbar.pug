@@ -1,3 +1,21 @@
+#fb-root
+script.
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '513099935550335',
+      xfbml      : true,
+      version    : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {return;}
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
 navbar.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
   .container
     .navbar-header
@@ -9,6 +27,6 @@ navbar.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
     .collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
         li
-          a(href="#") Sign In
+          a(href="#") Home
         li
-          a(href="#") Register
+          .fb-login-button(data-max-rows="1" data-size="large" data-show-faces="false" data-auto-logout-link="true")

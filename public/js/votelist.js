@@ -19,7 +19,7 @@ var VoteView = React.createClass({
       }
     );
     return(
-      <div>
+      <div className="container-fluid">
           {Voterows}
       </div>
     );
@@ -45,10 +45,10 @@ var Vote = React.createClass({
   render: function(){
     return (
       <div className="col-sm-3 vote-item">
-        <a href={this.props.vote.link}>
+        <a className="text-muted" href={this.props.vote.link}>
+          <h4>{this.props.vote.head}</h4>
           <div className="vote-caption">
-            <h4>{this.props.vote.head}</h4>
-            <p id="small-text" className="text-muted">{this.props.vote.description}</p>
+            <p class="small-text">{this.props.vote.description}</p>
           </div>
         </a>
       </div>
