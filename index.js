@@ -39,7 +39,6 @@ var votedata=[
       description: "Who is better?"
     }
   ]
-
 ];
 
 app.get('/', function (req, res) {
@@ -47,7 +46,22 @@ app.get('/', function (req, res) {
 });
 
 app.get('/mypolls', function(req, res){
-  res.render('webpages/mypolls', { title: "My Polls" });
+  res.render('webpages/mypolls', { title: "My Polls", votedata: JSON.stringify(votedata)});
+});
+
+app.get('/newpoll', function(req,res){
+  res.render('webpages/createPoll', {title: "New Poll"});
+});
+
+app.post('/api/addpoll', function(req,res){
+  //TODO Add data
+  id = 0;
+  res.redirect('/showpoll/' + id);
+})
+
+app.get('/showpoll/:param', function(req,res){
+  //TODO
+  res.render('webpages/createPoll', {title: "Poll View", data: });
 })
 
 app.use(express.static(path.join(__dirname, 'public')));

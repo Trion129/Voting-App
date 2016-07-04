@@ -1,4 +1,6 @@
 include ../layouts/layout.pug
 block content
-  #RecentVotes
+  script.
+    var data = !{votedata};
+  #RecentVotes(style = "margin-top: 50px")
   script(src="js/bundle.js")
