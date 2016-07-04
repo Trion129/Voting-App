@@ -1,44 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var votes=[
-  [
-    {
-      link: "#",
-      head: "Kejriwal vs Modi",
-      description: "Who would win the polls?"
-    },
-    {
-      link: "#",
-      head: "Spooderman or superman",
-      description: "Who is better?"
-    },
-    {
-      link: "#",
-      head: "Spooderman or superman",
-      description: "Who is better?"
-    }
-  ],
-  [
-    {
-      link: "#",
-      head: "Kejriwal vs Modi",
-      description: "Who would win the polls?"
-    },
-    {
-      link: "#",
-      head: "Spooderman or superman",
-      description: "Who is better?"
-    },
-    {
-      link: "#",
-      head: "Spooderman or superman",
-      description: "Who is better?"
-    }
-  ]
-
-];
-
 var VoteView = React.createClass({
   render: function(){
     var Voterows = this.props.votes.map(
@@ -84,4 +46,4 @@ var Vote = React.createClass({
   }
 });
 
-ReactDOM.render(<VoteView votes={votes} />, document.getElementById("RecentVotes"))
+ReactDOM.render(<VoteView votes={data} />, document.getElementById("RecentVotes"))

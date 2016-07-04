@@ -1,5 +1,8 @@
 include ../layouts/layout.pug
 block content
+  script.
+    var data = !{votedata};
+    console.log(data);
   .jumbotron.introHead.text-center
     h1 VotesApp
     h2 Your Poll Host :)

@@ -19694,32 +19694,6 @@ module.exports = require('./lib/React');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-var votes = [[{
-  link: "#",
-  head: "Kejriwal vs Modi",
-  description: "Who would win the polls?"
-}, {
-  link: "#",
-  head: "Spooderman or superman",
-  description: "Who is better?"
-}, {
-  link: "#",
-  head: "Spooderman or superman",
-  description: "Who is better?"
-}], [{
-  link: "#",
-  head: "Kejriwal vs Modi",
-  description: "Who would win the polls?"
-}, {
-  link: "#",
-  head: "Spooderman or superman",
-  description: "Who is better?"
-}, {
-  link: "#",
-  head: "Spooderman or superman",
-  description: "Who is better?"
-}]];
-
 var VoteView = React.createClass({
   displayName: 'VoteView',
 
@@ -19779,6 +19753,6 @@ var Vote = React.createClass({
   }
 });
 
-ReactDOM.render(React.createElement(VoteView, { votes: votes }), document.getElementById("RecentVotes"));
+ReactDOM.render(React.createElement(VoteView, { votes: data }), document.getElementById("RecentVotes"));
 
 },{"react":167,"react-dom":2}]},{},[168]);
