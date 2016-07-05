@@ -9,7 +9,8 @@ var votedata=[
     {
       link: "#",
       head: "Kejriwal vs Modi",
-      description: "Who would win the polls?"
+      description: "Who would win the polls?",
+      options: ["kejriwal","modi","BB ki shines"]
     },
     {
       link: "#",
@@ -41,6 +42,9 @@ var votedata=[
   ]
 ];
 
+
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/', function (req, res) {
   res.render('webpages/index', { title: 'Votesapp', votedata: JSON.stringify(votedata)});
 });
@@ -56,14 +60,12 @@ app.get('/newpoll', function(req,res){
 app.post('/api/addpoll', function(req,res){
   //TODO Add data
   id = 0;
-  res.redirect('/showpoll/' + id);
+  res.redirect('/viewpoll/' + id);
 })
 
-app.get('/showpoll/:param', function(req,res){
+app.get('/viewpoll/:param', function(req,res){
   //TODO
-  res.render('webpages/createPoll', {title: "Poll View", data: });
+  res.render('webpages/viewpoll', {title: "Poll View", data: JSON.stringify(votedata[0][0])});
 })
-
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(process.env.PORT || 8080);
