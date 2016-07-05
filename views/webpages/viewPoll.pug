@@ -1,15 +1,16 @@
 include ../layouts/layout.pug
 block content
   script.
-    var data = !{votedata};
+    var data = !{data};
+  script(src="https://www.gstatic.com/charts/loader.js")
   .container(style = "margin-top: 50px")
     .row
+      .col-sm-6
+        h2#Head
+        h3#Desc
+        #options
       .col-md-6
-        h2= data.head
-        h3= data.description
-        form(role = "form" action="api/vote/" method="POST")
-          #options
-          button(type="submit" class="btn btn-default") Submit
-      .col-md-6
+        #chart(style="height: 70%")
 
+  script(src="/js/view.js")
   script(src="/js/bundle2.js")

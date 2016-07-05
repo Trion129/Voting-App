@@ -19702,9 +19702,29 @@ var OptionView = React.createClass({
       return React.createElement(Option, { option: option, key: index });
     });
     return React.createElement(
-      'div',
-      null,
-      Options
+      'form',
+      { role: 'form', action: 'api/vote/', method: 'POST' },
+      React.createElement(
+        'div',
+        { className: 'form-group' },
+        Options,
+        React.createElement(
+          'div',
+          { className: 'radio radio-primary' },
+          React.createElement(
+            'label',
+            null,
+            React.createElement('input', { type: 'radio', name: 'option' }),
+            'Other'
+          )
+        ),
+        React.createElement('input', { className: 'form-control', type: 'text', name: 'option' })
+      ),
+      React.createElement(
+        'button',
+        { type: 'submit', className: 'btn btn-raised btn-primary' },
+        ' Submit '
+      )
     );
   }
 });
@@ -19715,9 +19735,13 @@ var Option = React.createClass({
   render: function () {
     return React.createElement(
       'div',
-      { className: 'form-group' },
-      React.createElement('input', { type: 'radio' }),
-      data.option
+      { className: 'radio radio-primary' },
+      React.createElement(
+        'label',
+        null,
+        React.createElement('input', { name: 'option', type: 'radio' }),
+        this.props.option[0]
+      )
     );
   }
 });

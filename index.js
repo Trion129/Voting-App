@@ -10,7 +10,7 @@ var votedata=[
       link: "#",
       head: "Kejriwal vs Modi",
       description: "Who would win the polls?",
-      options: ["kejriwal","modi","BB ki shines"]
+      options: [["kejriwal",2],["modi",4],["BB ki shines",6]]
     },
     {
       link: "#",

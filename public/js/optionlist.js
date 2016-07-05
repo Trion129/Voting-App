@@ -9,10 +9,16 @@ var OptionView = React.createClass({
       }
     );
     return(
-      <div>
-          {Options}
-          <input className="form-control" type="radio"/> Other: <input className="form-control" />
-      </div>
+      <form role="form" action="api/vote/" method="POST">
+          <div className="form-group">
+            {Options}
+            <div className="radio radio-primary">
+              <label><input type="radio" name="option"/>Other</label>
+            </div>
+              <input className="form-control" type="text" name="option" />
+          </div>
+          <button type="submit" className="btn btn-raised btn-primary"> Submit </button>
+      </form>
     );
   }
 });
@@ -20,8 +26,10 @@ var OptionView = React.createClass({
 var Option = React.createClass({
   render: function(){
     return (
-      <div className="form-group">
-        <input type="radio" />{data.option}
+      <div className="radio radio-primary">
+        <label>
+          <input name="option" type="radio" />{this.props.option[0]}
+        </label>
       </div>
     )
   }
