@@ -42,11 +42,15 @@ var votedata=[
   ]
 ];
 
+var url = 'mongodb://localhost:27017/Votes';
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
-
+  mongodb.MongoClient.connect(url, function(err,db){
+    
+    db.close();
+  })
   res.render('webpages/index', { title: 'Votesapp', votedata: JSON.stringify(votedata)});
 });
 
