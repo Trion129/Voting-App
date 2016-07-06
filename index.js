@@ -1,7 +1,7 @@
 var express = require("express");
 var path = require('path');
 var app = express();
-
+var mongodb = require("mongodb");
 app.set('view engine', 'pug');
 
 var votedata=[
@@ -46,6 +46,7 @@ var votedata=[
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function (req, res) {
+
   res.render('webpages/index', { title: 'Votesapp', votedata: JSON.stringify(votedata)});
 });
 
