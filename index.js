@@ -109,6 +109,18 @@ app.post('/api/addpoll', function(req,res){
   });
 })
 
+app.get('/viewpoll/:param', function(req,res){
+  var query = req.params.param;
+  mongodb.MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    find({_id: query}, db, function(vote) {
+      var votedata = vote[0];
+      res.render('webpages/viewpoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
+      db.close();
+    });
+  });
+});
+
 app.post('/api/vote/:param', function(req,res){
   var votes = req.body.options.split(/\r\n/);
   var id = shortid.generate();
@@ -128,16 +140,5 @@ app.post('/api/vote/:param', function(req,res){
     });
   });
 })
-app.get('/viewpoll/:param', function(req,res){
-  var query = req.params.param;
-  mongodb.MongoClient.connect(url, function(err, db) {
-    assert.equal(null, err);
-    find({_id: query}, db, function(vote) {
-      var votedata = vote[0];
-      res.render('webpages/viewpoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
-      db.close();
-    });
-  });
-});
 
 app.listen(process.env.PORT || 8080);
