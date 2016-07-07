@@ -9,7 +9,7 @@ var OptionView = React.createClass({
       }
     );
     return(
-      <form role="form" action="api/vote/" method="POST">
+      <form role="form" action={"/api/vote/" + data._id} method="POST">
           <div className="form-group">
             {Options}
             <div className="radio radio-primary">

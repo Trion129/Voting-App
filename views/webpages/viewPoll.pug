@@ -2,6 +2,7 @@ include ../layouts/layout.pug
 block content
   script.
     var data = !{data};
+    var id = id;
   script(src="https://www.gstatic.com/charts/loader.js")
   .container(style = "margin-top: 50px")
     .row
@@ -9,7 +10,7 @@ block content
         h2#Head
         h3#Desc
         #options
-      .col-md-6
+      .col-sm-6
         #chart(style="height: 70%")
 
   script(src="/js/view.js")

@@ -19703,7 +19703,7 @@ var OptionView = React.createClass({
     });
     return React.createElement(
       'form',
-      { role: 'form', action: 'api/vote/', method: 'POST' },
+      { role: 'form', action: "/api/vote/" + data._id, method: 'POST' },
       React.createElement(
         'div',
         { className: 'form-group' },

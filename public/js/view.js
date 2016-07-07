@@ -3,7 +3,6 @@ google.charts.load('current', {'packages':['corechart']});
       function drawChart() {
         var options = data.options;
         options.unshift(["Options","Votes"])
-        console.log(options);
         var passdata = google.visualization.arrayToDataTable(options);
 
         var options = {

@@ -1,21 +1,27 @@
 var express = require("express");
 var path = require('path');
 var app = express();
+var bodyParser = require('body-parser');
 var assert = require('assert');
 var mongodb = require("mongodb");
+var shortid = require("shortid");
 app.set('view engine', 'pug');
 
 var url = 'mongodb://localhost:27017/test';
 var i,j;
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.bodyParser());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+
+
 var find = function(criteria, db, callback) {
    var votes = [];
    if(criteria == {}){
      var cursor = db.collection("Votes").find().limit(15);
   }
   else{
-     var cursor = db.collection("Votes").find(criteria);
+     var cursor = db.collection("Votes").find(criteria).limit(15);
   }
 
    cursor.each(function(err, doc) {
@@ -81,25 +87,57 @@ app.get('/newpoll', function(req,res){
 });
 
 app.post('/api/addpoll', function(req,res){
+  var votes = req.body.options.split(/\r\n/);
+  var options = [];
+  for(i = 0; i < votes.length; i++){
+    options.push([votes[i],0]);
+  }
+  var id = shortid.generate();
   var criteria={
-    title : req.body.title,
+    _id : id,
+    head : req.body.title,
     description : req.body.description,
     user : req.body.user,
-    options : req.body.options
+    options : options
   };
-  res.end(criteria);
-  /*MongoClient.connect(url, function(err, db) {
+  mongodb.MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     insert(criteria,db, function(result) {
-        res.redirect('/viewpoll/' + result._id);
+        res.redirect('/viewpoll/' + id);
         db.close();
     });
-  });*/
+  });
 })
 
-app.get('/viewpoll/:param', function(req,res){
-  //TODO
-  res.render('webpages/viewpoll', {title: "Poll View", data: JSON.stringify(votedata[0][0])});
+app.post('/api/vote/:param', function(req,res){
+  var votes = req.body.options.split(/\r\n/);
+  var id = shortid.generate();
+  var query = req.params.param;
+  var criteria={
+    _id : id,
+    head : req.body.title,
+    description : req.body.description,
+    user : req.body.user,
+    options : options
+  };
+  mongodb.MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    update(criteria,db, function(result) {
+        res.redirect('/');
+        db.close();
+    });
+  });
 })
+app.get('/viewpoll/:param', function(req,res){
+  var query = req.params.param;
+  mongodb.MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    find({_id: query}, db, function(vote) {
+      var votedata = vote[0];
+      res.render('webpages/viewpoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
+      db.close();
+    });
+  });
+});
 
 app.listen(process.env.PORT || 8080);
