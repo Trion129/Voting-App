@@ -19694,12 +19694,29 @@ module.exports = require('./lib/React');
 var React = require('react');
 var ReactDOM = require('react-dom');
 
+var Option = React.createClass({
+  displayName: 'Option',
+
+  render: function () {
+    return React.createElement(
+      'div',
+      { className: 'radio radio-primary' },
+      React.createElement(
+        'label',
+        null,
+        React.createElement('input', { name: 'option', type: 'radio', value: this.props.value }),
+        this.props.option[0]
+      )
+    );
+  }
+});
+
 var OptionView = React.createClass({
   displayName: 'OptionView',
 
   render: function () {
     var Options = this.props.options.map(function (option, index) {
-      return React.createElement(Option, { option: option, key: index });
+      return React.createElement(Option, { value: index, option: option, key: index });
     });
     return React.createElement(
       'form',
@@ -19714,33 +19731,16 @@ var OptionView = React.createClass({
           React.createElement(
             'label',
             null,
-            React.createElement('input', { type: 'radio', name: 'option' }),
+            React.createElement('input', { type: 'radio', name: 'option', value: 'add' }),
             'Other'
           )
         ),
-        React.createElement('input', { className: 'form-control', type: 'text', name: 'option' })
+        React.createElement('input', { className: 'form-control', type: 'text', name: 'addoption' })
       ),
       React.createElement(
         'button',
         { type: 'submit', className: 'btn btn-raised btn-primary' },
         ' Submit '
-      )
-    );
-  }
-});
-
-var Option = React.createClass({
-  displayName: 'Option',
-
-  render: function () {
-    return React.createElement(
-      'div',
-      { className: 'radio radio-primary' },
-      React.createElement(
-        'label',
-        null,
-        React.createElement('input', { name: 'option', type: 'radio' }),
-        this.props.option[0]
       )
     );
   }

@@ -38,6 +38,14 @@ var insert = function(criteria , db, callback) {
     callback(result);
   });
 };
+var update = function(criteria,updater,db, callback) {
+   db.collection('Votes').updateOne(
+      criteria,
+      updater,
+      function(err, results) {
+        callback();
+   });
+};
 
 app.get('/', function (req, res) {
   mongodb.MongoClient.connect(url, function(err,db){
@@ -122,20 +130,33 @@ app.get('/viewpoll/:param', function(req,res){
 });
 
 app.post('/api/vote/:param', function(req,res){
-  var votes = req.body.options.split(/\r\n/);
-  var id = shortid.generate();
+  var option = req.body.option;
   var query = req.params.param;
   var criteria={
-    _id : id,
-    head : req.body.title,
-    description : req.body.description,
-    user : req.body.user,
-    options : options
+    _id : query
   };
+  var updater;
+  if(option == "add"){
+    updater = {
+      $push: {
+        "options": [req.body.addoption, 1 ]
+      }
+    }
+  }
+  else{
+    var index = req.body.option;
+    updater = {
+      $inc: {
+
+      }
+    }
+    var temp = 'options.'+index+'.1';
+    updater.$inc[temp] = 1;
+  }
   mongodb.MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
-    update(criteria,db, function(result) {
-        res.redirect('/');
+    update(criteria, updater , db, function(result) {
+        res.redirect('/viewpoll/' + query);
         db.close();
     });
   });
