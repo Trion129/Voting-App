@@ -94,6 +94,18 @@ app.get('/newpoll', function(req,res){
   res.render('webpages/createPoll', {title: "New Poll"});
 });
 
+app.get('/viewpoll/:param', function(req,res){
+  var query = req.params.param;
+  mongodb.MongoClient.connect(url, function(err, db) {
+    assert.equal(null, err);
+    find({_id: query}, db, function(vote) {
+      var votedata = vote[0];
+      res.render('webpages/viewpoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
+      db.close();
+    });
+  });
+});
+
 app.post('/api/addpoll', function(req,res){
   var votes = req.body.options.split(/\r\n/);
   var options = [];
@@ -117,18 +129,6 @@ app.post('/api/addpoll', function(req,res){
   });
 })
 
-app.get('/viewpoll/:param', function(req,res){
-  var query = req.params.param;
-  mongodb.MongoClient.connect(url, function(err, db) {
-    assert.equal(null, err);
-    find({_id: query}, db, function(vote) {
-      var votedata = vote[0];
-      res.render('webpages/viewpoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
-      db.close();
-    });
-  });
-});
-
 app.post('/api/vote/:param', function(req,res){
   var option = req.body.option;
   var query = req.params.param;
@@ -137,6 +137,10 @@ app.post('/api/vote/:param', function(req,res){
   };
   var updater;
   if(option == "add"){
+    if(req.body.addoption == ""){
+      res.redirect('/viewpoll/' + query);
+      return;
+    }
     updater = {
       $push: {
         "options": [req.body.addoption, 1 ]
