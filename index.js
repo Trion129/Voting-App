@@ -1,10 +1,13 @@
 var express = require("express");
 var path = require('path');
-var app = express();
 var bodyParser = require('body-parser');
 var assert = require('assert');
 var mongodb = require("mongodb");
 var shortid = require("shortid");
+var cookieParser = require('cookie-parser');
+
+var app = express();
+
 app.set('view engine', 'pug');
 
 var url = 'mongodb://localhost:27017/test';
@@ -13,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+app.use(cookieParser());
 
 
 var find = function(criteria, db, callback) {
@@ -132,6 +136,7 @@ app.post('/api/addpoll', function(req,res){
 app.post('/api/vote/:param', function(req,res){
   var option = req.body.option;
   var query = req.params.param;
+  console.log("Cookies :  ", req.cookies);
   var criteria={
     _id : query
   };
