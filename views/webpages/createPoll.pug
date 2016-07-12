@@ -14,3 +14,5 @@ block content
           textarea.form-control#options(name="options" rows = "5")
         input#name(type="hidden" name="user" value="1243221")
         button(type="submit" class="btn btn-default") Submit
+  script.
+    document.getElementById("name").value = getCookie("user");
