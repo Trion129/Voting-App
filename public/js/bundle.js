@@ -19733,7 +19733,7 @@ var Vote = React.createClass({
       { className: 'col-sm-3 vote-item' },
       React.createElement(
         'a',
-        { className: 'text-muted', href: this.props.vote.link },
+        { className: 'text-muted', href: "/viewpoll/" + this.props.vote._id },
         React.createElement(
           'h4',
           null,

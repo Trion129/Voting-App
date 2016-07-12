@@ -13,7 +13,7 @@ script.
         setCookie("user",uid,response.authResponse.expiresIn)
         var accessToken = response.authResponse.accessToken;
       } else if (response.status === 'not_authorized') {
-
+        logout();
       } else {
 
       }
@@ -37,8 +37,8 @@ navbar.navbar.navbar-inverse.navbar-fixed-top(role='navigation')
         <span class="icon-bar"></span>
       a.navbar-brand(href="javascript:void(0)") VotesApp
     .collapse.navbar-collapse
-      ul.nav.navbar-nav.navbar-right
+      ul#buttons.nav.navbar-nav.navbar-right
         li
           a(href="/") Home
         li
-          a#loginButton(href="/" onclick="login") Login/Register
+          a(href="/" onclick="login()") Login/Register

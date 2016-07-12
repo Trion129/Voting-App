@@ -35,7 +35,7 @@ var Vote = React.createClass({
   render: function(){
     return (
       <div className="col-sm-3 vote-item">
-        <a className="text-muted" href={this.props.vote.link}>
+        <a className="text-muted" href={"/viewpoll/" + this.props.vote._id}>
           <h4>{this.props.vote.head}</h4>
           <div className="vote-caption">
             <p class="small-text">{this.props.vote.description}</p>

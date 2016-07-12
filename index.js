@@ -136,7 +136,6 @@ app.post('/api/addpoll', function(req,res){
 app.post('/api/vote/:param', function(req,res){
   var option = req.body.option;
   var query = req.params.param;
-  console.log("Cookies :  ", req.cookies);
   var criteria={
     _id : query
   };
