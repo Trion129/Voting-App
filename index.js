@@ -101,7 +101,7 @@ app.get('/viewpoll/:param', function(req,res){
     assert.equal(null, err);
     find({_id: query}, db, function(vote) {
       var votedata = vote[0];
-      res.render('webpages/viewpoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
+      res.render('webpages/viewPoll', {title: "Poll View",id: votedata._id, data: JSON.stringify(votedata)});
       db.close();
     });
   });
