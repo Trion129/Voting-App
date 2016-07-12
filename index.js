@@ -4,19 +4,17 @@ var bodyParser = require('body-parser');
 var assert = require('assert');
 var mongodb = require("mongodb");
 var shortid = require("shortid");
-var cookieParser = require('cookie-parser');
 
 var app = express();
 
 app.set('view engine', 'pug');
 
-var url = 'mongodb://localhost:27017/test';
+var url = '"mongodb://trion:paintball@ds017432.mlab.com:17432/mymongo"';
 var i,j;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(cookieParser());
 
 
 var find = function(criteria, db, callback) {
