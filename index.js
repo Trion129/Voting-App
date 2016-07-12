@@ -9,8 +9,7 @@ var app = express();
 
 app.set('view engine', 'pug');
 
-var url = 'mongodb://trion:paintball@ds017432.mlab.com:17432/mymongo';
-var i,j;
+var url = 'mongodb://trion:paintball@ds017432.mlab.com:17432/mymongo',i,j;
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
   extended: true
